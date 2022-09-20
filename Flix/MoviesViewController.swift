@@ -34,12 +34,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     self.movies = dataDictionary["results"] as! [[String:Any]]
                     
                     self.tableView.reloadData()
-                 
-                    print(dataDictionary)
-                    // TODO: Get the array of movies
-                    // TODO: Store the movies in a property to use elsewhere
-                    // TODO: Reload your table view data
-
              }
         }
         task.resume()
@@ -61,13 +55,24 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let posterPath = movie["poster_path"] as! String
         let posterUrl = URL(string:baseUrl + posterPath)
         
+        cell.posterView.af.setImage(withURL: posterUrl!)
+        
         
         cell.titleLabel!.text = title
         cell.synopsisLabel!.text = synopsis
-        cell.posterView.af.setImage(withURL: posterUrl!)
 
         return cell
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let movie = movies[indexPath.row]
+        
+        
+        let detailViewController = segue.destination as! MovieDetailsViewController
+        detailViewController.movie = movie
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
