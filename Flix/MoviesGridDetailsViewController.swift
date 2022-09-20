@@ -1,15 +1,15 @@
 //
-//  MovieDetailsViewController.swift
+//  MoviesGridDetailsViewController.swift
 //  Flix
 //
-//  Created by Preston Barney on 9/18/22.
+//  Created by Preston Barney on 9/19/22.
 //
 
 import UIKit
 import AlamofireImage
 
-class MovieDetailsViewController: UIViewController {
-    
+class MoviesGridDetailsViewController: UIViewController {
+
     @IBOutlet weak var backdropView: UIImageView!
     @IBOutlet weak var posterView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -38,6 +38,7 @@ class MovieDetailsViewController: UIViewController {
         
         
         backdropView.af.setImage(withURL: backdropUrl!)
+        
     }
-
+    
 }

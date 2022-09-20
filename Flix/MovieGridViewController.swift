@@ -40,8 +40,6 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
                     self.movies = dataDictionary["results"] as! [[String:Any]]
                     
                     self.collectionView.reloadData()
-                 
-                    print(self.movies)
              }
         }
         task.resume()
@@ -50,7 +48,6 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
           return movies.count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieGridCell", for: indexPath) as! MovieGridCell
@@ -66,5 +63,13 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource, UIC
         return cell
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let cell = sender as! UICollectionViewCell
+        let indexPath = indexPath.item(for UICollectionView)
+        let movie = movies[indexPath.row]
+        
+        let detailViewController = segue.destination as! MoviesGridDetailsViewController
+        detailViewController.movie = movie
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
 }
