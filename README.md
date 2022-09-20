@@ -41,7 +41,7 @@ Describe any challenges encountered while building the app.
 ### App Walkthrough GIF
 
 
-<img src="m59OD1hCvO.gif" width=250><br>
+<img src="FlixScreenshot.gif" width=250><br>
 
 ### Notes
 In general iOS developement is a completely different way of thinking for me. At first, getting used to the idea of views and what they represent was a bit strange but now it makes a lot more sense to me. There are also a few syntactical parts of Swift that I will need to research on my own. 
